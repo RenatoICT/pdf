@@ -48,8 +48,8 @@ const TEMAS = {
 
   'cisd-mss': {
     titulo: ['CISD と MSS', '完全ガイド'],
-    gancho: '「安値を割った＝MSS」は罠です。',
-    subgancho: '抜けただけでは、まだ何も確定していません。順番を間違えると、構造の読み方が最初からずれます。',
+    gancho: '「直近の高値を抜けた」＝ MSS ではない。',
+    subgancho: 'ICT で最も多い誤解のひとつ。形が揃っていても、状況が伴わなければ MSS ではありません。',
     paginas: 34,
     figuras: 26,
     puntos: [
@@ -101,8 +101,8 @@ const TEMAS = {
 
   'usdcad-1': {
     titulo: ['USD/CAD の分析', '事例研究 パート1'],
-    gancho: '「過去のチャートばかりだ」と言われて。',
-    subgancho: '月足から順に落として、来週に何を期待するかまで。実際の一週間を、そのまま追いかけます。',
+    gancho: 'チャートを開いて最初に探すのは、エントリーではない。',
+    subgancho: 'ICT トレーダーが真っ先に探すのは、目立っているリクイディティ。どこへ向かっているのか分からなければ、何も使えません。',
     paginas: 41,
     figuras: 43,
     puntos: [
@@ -129,8 +129,8 @@ const TEMAS = {
 
   'usdcad-2': {
     titulo: ['USD/CAD の分析', '事例研究 パート2'],
-    gancho: 'アルゴリズムの一日を、曜日ごとに追いかける。',
-    subgancho: '4時間足から15分足まで。ロンドンキルゾンの騙しも、金曜の OTE も、実際の値動きで。',
+    gancho: '「売り手が強いから下がった」わけではない。',
+    subgancho: 'そこに Sellside Liquidity とオーダーブロックがあったから、アルゴリズムがそこで反応した。買い手と売り手は、関係ありません。',
     paginas: 37,
     figuras: 40,
     puntos: [
