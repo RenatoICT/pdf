@@ -51,7 +51,7 @@ const TEMAS = {
     gancho: '「安値を割った＝MSS」は罠です。',
     subgancho: '抜けただけでは、まだ何も確定していません。順番を間違えると、構造の読み方が最初からずれます。',
     paginas: 34,
-    figuras: null,
+    figuras: 26,
     puntos: [
       'MSS と CISD の違いを、最後まで',
       '月足で裏を取り、下位足で確かめる手順',
@@ -104,7 +104,7 @@ const TEMAS = {
     gancho: '「過去のチャートばかりだ」と言われて。',
     subgancho: '月足から順に落として、来週に何を期待するかまで。実際の一週間を、そのまま追いかけます。',
     paginas: 41,
-    figuras: null,
+    figuras: 43,
     puntos: [
       '月足のレンジと 50% から組み立てる',
       '三つのキーレベルが重なるところ',
@@ -132,7 +132,7 @@ const TEMAS = {
     gancho: 'アルゴリズムの一日を、曜日ごとに追いかける。',
     subgancho: '4時間足から15分足まで。ロンドンキルゾンの騙しも、金曜の OTE も、実際の値動きで。',
     paginas: 37,
-    figuras: null,
+    figuras: 40,
     puntos: [
       '4時間足で組み立てる一つのトレード',
       'ロンドンキルゾンの騙しと、手を止める場所',
