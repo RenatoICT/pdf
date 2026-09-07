@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICT 解説テキスト・無料公開 | RENATO ICT</title>
+<meta name="description" content="ICT の解説テキストを無料で公開しています。メールアドレスを入力すると、すぐに PDF が届きます。">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RENATO ICT">
+<link rel="preconnect" href="https://script.google.com">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* la paleta de las tarjetas de X, para que la pagina se lea como su continuacion */
+    --fondo:      #142136;
+    --fondo-alto: #1d3050;
+    --fondo-medio:#1a2a44;
+    --linea:      #4fbfb4;
+    --acento:     #6fd6c9;
+    --naranja:    #f2836b;
+    --texto:      #ffffff;
+    --texto-2:    #dbe7f2;
+    --texto-3:    #cfe0ec;
+    --tenue:      rgba(255,255,255,.42);
+    --panel:      rgba(255,255,255,.055);
+    --borde:      rgba(255,255,255,.18);
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: "Yu Gothic UI","Yu Gothic","Hiragino Sans","Meiryo",sans-serif;
+    background: var(--fondo);
+    background-image: linear-gradient(155deg,#1d3050 0%,#1a2a44 45%,#142136 100%);
+    background-attachment: fixed;
+    color: var(--texto);
+    line-height: 1.85;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .en { font-family: "Segoe UI","Helvetica Neue",Arial,sans-serif; }
+
+  .envoltura { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- encabezado ---------- */
+
+  .marca {
+    padding: 30px 0 0;
+    font-size: 13px; letter-spacing: .26em; color: var(--tenue);
+    font-family: "Segoe UI",sans-serif;
+  }
+
+  /* ---------- gancho ---------- */
+
+  .heroe { padding: 46px 0 10px; }
+
+  .insignia {
+    display: inline-block; border: 1px solid var(--linea); color: var(--acento);
+    font-size: 12px; letter-spacing: .22em; padding: 8px 15px; margin-bottom: 30px;
+  }
+
+  h1 { font-size: 34px; line-height: 1.34; font-weight: 700; letter-spacing: .01em; }
+  h1 .ac { color: var(--acento); display: block; }
+
+  .gancho {
+    margin-top: 30px; border-left: 3px solid var(--linea); padding-left: 20px;
+  }
+  .gancho p { font-size: 17px; color: var(--texto-3); }
+  .gancho p + p { margin-top: 8px; font-size: 15px; }
+
+  /* ---------- datos del documento ---------- */
+
+  .datos {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px;
+  }
+  .dato {
+    background: var(--panel); padding: 14px 20px; flex: 1 1 130px;
+  }
+  .dato .n {
+    font-family: "Segoe UI",sans-serif; font-size: 27px; font-weight: 700;
+    color: var(--acento); line-height: 1.2; display: block;
+  }
+  .dato .e { font-size: 13px; color: var(--texto-3); letter-spacing: .04em; }
+
+  /* ---------- formulario ---------- */
+
+  .captura {
+    margin-top: 44px; background: var(--panel);
+    border: 1px solid var(--borde); padding: 30px 26px;
+  }
+  .captura h2 { font-size: 20px; font-weight: 700; line-height: 1.5; }
+  .captura .nota { margin-top: 10px; font-size: 14px; color: var(--texto-3); }
+
+  form { margin-top: 22px; }
+
+  .campo {
+    width: 100%; padding: 15px 16px; font-size: 16px;
+    font-family: inherit; color: var(--texto);
+    background: rgba(0,0,0,.28); border: 1px solid var(--borde);
+    border-radius: 2px; transition: border-color .15s;
+  }
+  .campo::placeholder { color: rgba(255,255,255,.34); }
+  .campo:focus { outline: none; border-color: var(--linea); }
+  .campo:disabled { opacity: .5; }
+
+  /* trampa para bots: invisible para personas, tentadora para robots */
+  .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .boton {
+    width: 100%; margin-top: 12px; padding: 16px;
+    font-family: inherit; font-size: 17px; font-weight: 700;
+    color: #10202f; background: var(--acento);
+    border: none; border-radius: 2px; cursor: pointer;
+    transition: background .15s, opacity .15s;
+  }
+  .boton:hover:not(:disabled) { background: #8ee2d7; }
+  .boton:disabled { opacity: .55; cursor: default; }
+
+  .privacidad { margin-top: 14px; font-size: 12.5px; line-height: 1.7; color: var(--tenue); }
+
+  .aviso { margin-top: 14px; font-size: 14px; line-height: 1.7; padding: 12px 14px; display: none; }
+  .aviso.error { display: block; color: #ffd9cf; background: rgba(242,131,107,.14); border-left: 3px solid var(--naranja); }
+
+  /* estado de exito: reemplaza al formulario */
+  .listo { display: none; text-align: center; padding: 12px 0 4px; }
+  .listo .tilde {
+    width: 52px; height: 52px; margin: 0 auto 18px; border-radius: 50%;
+    border: 2px solid var(--acento); display: flex; align-items: center;
+    justify-content: center; font-size: 26px; color: var(--acento);
+  }
+  .listo h2 { font-size: 20px; }
+  .listo p { margin-top: 12px; font-size: 15px; color: var(--texto-3); }
+
+  .captura.enviado form, .captura.enviado h2, .captura.enviado .nota,
+  .captura.enviado .privacidad { display: none; }
+  .captura.enviado .listo { display: block; }
+
+  /* ---------- vistazo al documento ---------- */
+
+  .seccion { margin-top: 62px; }
+  .seccion > h2 {
+    font-size: 13px; letter-spacing: .22em; color: var(--acento);
+    font-weight: 700; padding-bottom: 12px; border-bottom: 1px solid var(--borde);
+  }
+
+  .laminas { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
+  .laminas img {
+    width: 100%; height: auto; aspect-ratio: 16 / 9; display: block;
+    border: 1px solid var(--borde); background: #0d1826;
+  }
+
+  .puntos { list-style: none; margin-top: 22px; }
+  .puntos li {
+    font-size: 16px; color: var(--texto-2); line-height: 1.7;
+    margin-bottom: 14px; padding-left: 22px; position: relative;
+  }
+  .puntos li::before { content: "\25AA"; position: absolute; left: 0; color: var(--linea); }
+
+  .indice { list-style: none; counter-reset: cap; margin-top: 22px; }
+  .indice li {
+    counter-increment: cap; display: flex; gap: 16px; align-items: baseline;
+    padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.07);
+    font-size: 15.5px; color: var(--texto-2);
+  }
+  .indice li::before {
+    content: counter(cap,decimal-leading-zero);
+    font-family: "Segoe UI",sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--linea); flex: none; width: 24px;
+  }
+
+  /* ---------- cierre ---------- */
+
+  .curso {
+    margin-top: 62px; padding: 24px 26px;
+    border-left: 3px solid var(--linea); background: var(--panel);
+  }
+  .curso p { font-size: 15px; color: var(--texto-3); }
+  .curso a { color: var(--acento); text-decoration: none; border-bottom: 1px solid rgba(111,214,201,.4); }
+  .curso a:hover { border-bottom-color: var(--acento); }
+
+  footer {
+    margin-top: 54px; padding: 26px 0 40px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    font-size: 12px; letter-spacing: .2em; color: var(--tenue);
+    font-family: "Segoe UI",sans-serif;
+  }
+
+  /* ---------- pantallas grandes ---------- */
+
+  @media (min-width: 700px) {
+    body { font-size: 17px; }
+    h1 { font-size: 52px; }
+    .heroe { padding: 64px 0 10px; }
+    .insignia { font-size: 13px; padding: 10px 18px; }
+    .gancho { padding-left: 24px; }
+    .gancho p { font-size: 19px; }
+    .captura { padding: 38px 34px; }
+    .campo, .boton { font-size: 17px; }
+    .laminas { grid-template-columns: 1fr 1fr; }
+    .envoltura { padding: 0 32px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="envoltura">
+
+  <div class="marca">RENATO ICT</div>
+
+  <header class="heroe">
+    <div class="insignia">解説テキスト・無料公開</div>
+    <h1 id="titulo"></h1>
+    <div class="gancho">
+      <p id="gancho"></p>
+      <p id="subgancho"></p>
+    </div>
+    <div class="datos" id="datos"></div>
+  </header>
+
+  <section class="captura" id="captura">
+    <h2>メールアドレスを入力すると、すぐに PDF が届きます。</h2>
+    <p class="nota">登録は不要です。届いたメールのリンクから、そのまま読めます。</p>
+
+    <form id="formulario" novalidate>
+      <label class="trampa" aria-hidden="true">
+        会社名 <input type="text" name="empresa" tabindex="-1" autocomplete="off">
+      </label>
+      <input class="campo" type="email" id="email" name="email"
+             placeholder="mail@example.com" required
+             autocomplete="email" inputmode="email" spellcheck="false">
+      <button class="boton" type="submit" id="boton">無料で受け取る</button>
+    </form>
+
+    <div class="aviso" id="aviso" role="alert"></div>
+
+    <p class="privacidad">
+      メールアドレスは資料の送付と、ICT に関するお知らせにのみ使用します。
+      第三者に渡すことはありません。配信はいつでも停止できます。
+    </p>
+
+    <div class="listo" id="listo">
+      <div class="tilde">✓</div>
+      <h2>送信しました。</h2>
+      <p>
+        数分以内にメールが届きます。<br>
+        見当たらない場合は、迷惑メールフォルダをご確認ください。
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <h2>この資料について</h2>
+    <ul class="puntos" id="puntos"></ul>
+    <div class="laminas" id="laminas"></div>
+  </section>
+
+  <section class="seccion">
+    <h2>目次</h2>
+    <ol class="indice" id="indice"></ol>
+  </section>
+
+  <div class="curso">
+    <p>
+      体系的に学びたい方へ。ICT の講座も公開しています ―
+      <a href="https://renatoict.github.io/" target="_blank" rel="noopener">RenatoICT.github.io</a>
+    </p>
+  </div>
+
+  <footer>RENATO ICT</footer>
+
+</div>
+
+<script src="temas.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---------------------------------------------------------------
+   * Pegar aca la URL del despliegue de Apps Script (docs/02-...).
+   * Termina en /exec, no en /dev.
+   * --------------------------------------------------------------- */
+  var ENDPOINT = 'PEGAR_AQUI_LA_URL_DEL_APPS_SCRIPT';
+
+  var TARJETAS = 4;
+
+  // ---- que tema mostrar -------------------------------------------------
+
+  var slug = new URLSearchParams(location.search).get('tema') || TEMA_POR_DEFECTO;
+  if (!TEMAS[slug]) slug = TEMA_POR_DEFECTO;
+  var tema = TEMAS[slug];
+
+  // ---- pintar la pagina -------------------------------------------------
+
+  document.title = tema.titulo.join(' ') + ' | RENATO ICT';
+
+  document.getElementById('titulo').innerHTML =
+    tema.titulo[0] + '<span class="ac">' + tema.titulo[1] + '</span>';
+  document.getElementById('gancho').textContent = tema.gancho;
+  document.getElementById('subgancho').textContent = tema.subgancho;
+
+  var datos = [['全' + tema.paginas, 'ページ']];
+  if (tema.figuras) datos.push(['図版' + tema.figuras, '点']);
+  datos.push(['¥0', '無料']);
+  document.getElementById('datos').innerHTML = datos.map(function (d) {
+    return '<div class="dato"><span class="n">' + d[0] + '</span><span class="e">' + d[1] + '</span></div>';
+  }).join('');
+
+  document.getElementById('puntos').innerHTML =
+    tema.puntos.map(function (p) { return '<li>' + p + '</li>'; }).join('');
+
+  document.getElementById('indice').innerHTML =
+    tema.indice.map(function (c) { return '<li>' + c + '</li>'; }).join('');
+
+  var laminas = '';
+  for (var i = 1; i <= TARJETAS; i++) {
+    laminas += '<img src="assets/' + slug + '/x_card' + i + '.jpg" alt="" ' +
+               'width="1600" height="900" loading="lazy" decoding="async">';
+  }
+  document.getElementById('laminas').innerHTML = laminas;
+
+  // ---- envio del formulario ---------------------------------------------
+
+  var form    = document.getElementById('formulario');
+  var caja    = document.getElementById('captura');
+  var input   = document.getElementById('email');
+  var boton   = document.getElementById('boton');
+  var aviso   = document.getElementById('aviso');
+
+  function fallar(msg) {
+    aviso.textContent = msg;
+    aviso.className = 'aviso error';
+    boton.disabled = false;
+    input.disabled = false;
+    boton.textContent = '無料で受け取る';
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+
+    // si un bot lleno el campo oculto, fingimos exito y no mandamos nada
+    if (form.empresa.value) { caja.classList.add('enviado'); return; }
+
+    var email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      fallar('メールアドレスの形式をご確認ください。');
+      input.focus();
+      return;
+    }
+
+    if (ENDPOINT.indexOf('PEGAR_AQUI') === 0) {
+      fallar('送信先が未設定です。しばらくしてからお試しください。');
+      console.error('[landing] Falta configurar ENDPOINT con la URL del Apps Script.');
+      return;
+    }
+
+    aviso.className = 'aviso';
+    boton.disabled = true;
+    input.disabled = true;
+    boton.textContent = '送信中…';
+
+    // text/plain evita el preflight CORS; Apps Script lee e.postData.contents
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ email: email, tema: slug, origen: document.referrer || '' })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d && d.ok) caja.classList.add('enviado');
+        else fallar('送信できませんでした。時間をおいて、もう一度お試しください。');
+      })
+      .catch(function () {
+        fallar('送信できませんでした。通信環境をご確認のうえ、もう一度お試しください。');
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
